@@ -69,6 +69,16 @@ public class ElevensBoard extends Board {
     @Override
     public boolean anotherPlayIsPossible() {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+        ArrayList<Card> temp = new ArrayList<Card>(9);
+
+
+        int idx = 0;
+        while(idx<9){
+            card temp = cardAt(idx);
+            if(this.cardAt(idx).getRank().equals("jack") ||this.cardAt(idx).getRank().equals("queen") || this.cardAt(idx).getRank().equals("king")){
+                for( int i = 0; )
+            }
+        }
     }
 
     /**
@@ -103,10 +113,16 @@ public class ElevensBoard extends Board {
      * include a jack, a queen, and a king; false otherwise.
      */
     private boolean containsJQK(List<Integer> selectedCards) {
+        String temp = "";
+        String jack = "jack" ;
+        String queen = "queen";
+        String king = "king";
         if(selectedCards.size()==3){
             for(int i : selectedCards){
-                
+                temp += this.cardAt(i).getRank() + ", ";
             }
+            if(temp.indexOf(jack) >= 0 && temp.indexOf(queen) >= 0 && temp.indexOf(king) >= 0)
+                return true;
         }
         return false;
     }
