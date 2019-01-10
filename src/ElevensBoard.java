@@ -69,16 +69,24 @@ public class ElevensBoard extends Board {
     @Override
     public boolean anotherPlayIsPossible() {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-        ArrayList<Card> temp = new ArrayList<Card>(9);
-
 
         int idx = 0;
-        while(idx<9){
-            card temp = cardAt(idx);
-            if(this.cardAt(idx).getRank().equals("jack") ||this.cardAt(idx).getRank().equals("queen") || this.cardAt(idx).getRank().equals("king")){
-                for( int i = 0; )
+        int possibilitiesJQK = 7;
+        int possibilities11 = 8;
+
+        boolean result = false;
+
+        List<Integer> SelectedCards = new ArrayList<>(2);
+
+        for(int i =0 ; i < cardIndexes().size()-2;i++) {
+            for (int j = i; j < cardIndexes().size() - 1; j++) {
+                for(int x = j; x < cardIndexes().size();x++){
+
+                }
             }
         }
+
+        return result;
     }
 
     /**
