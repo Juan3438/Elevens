@@ -1,10 +1,7 @@
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * The ElevensBoard class represents the board in a game of Elevens.
- */
-public class ElevensBoard extends Board {
+public class ThirteensBoard extends Board {
 
     /**
      * The size (number of cards) on the board.
@@ -27,7 +24,7 @@ public class ElevensBoard extends Board {
      * The values of the cards for this game to be sent to the deck.
      */
     private static final int[] POINT_VALUES =
-            {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 0, 0};
+            {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 0};
 
     /**
      * Flag used to control debugging print statements.
@@ -38,7 +35,7 @@ public class ElevensBoard extends Board {
     /**
      * Creates a new <code>ElevensBoard</code> instance.
      */
-    public ElevensBoard() {
+    public ThirteensBoard() {
         super(BOARD_SIZE, RANKS, SUITS, POINT_VALUES);
     }
 
@@ -162,3 +159,4 @@ public class ElevensBoard extends Board {
      *         false otherwise.
      */
 }
+
