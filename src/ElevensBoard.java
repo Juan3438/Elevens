@@ -54,7 +54,7 @@ public class ElevensBoard extends Board {
      */
     @Override
     public boolean isLegal(List<Integer> selectedCards) {
-        return containsJQK(selectedCards) || containsPairSum11(selectedCards);
+        return (containsJQK(selectedCards) || containsPairSum11(selectedCards));
     }
 
     /**
@@ -69,24 +69,34 @@ public class ElevensBoard extends Board {
     @Override
     public boolean anotherPlayIsPossible() {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-
-        int idx = 0;
-        int possibilitiesJQK = 7;
-        int possibilities11 = 8;
-
-        boolean result = false;
-
-        List<Integer> SelectedCards = new ArrayList<>(2);
+        List<Integer> SelectedCards = new ArrayList<>();
 
         for(int i =0 ; i < cardIndexes().size()-2;i++) {
-            for (int j = i; j < cardIndexes().size() - 1; j++) {
-                for(int x = j; x < cardIndexes().size();x++){
+            for (int j = i + 1; j < cardIndexes().size() - 1; j++) {
+                for (int x = j + 1; x < cardIndexes().size(); x++) {
+                    SelectedCards.clear();
+                    SelectedCards.add(cardIndexes().get(i));
+                    SelectedCards.add(cardIndexes().get(j));
+                    SelectedCards.add(cardIndexes().get(x));
 
+
+                    if (isLegal(SelectedCards))
+                        return true;
                 }
             }
         }
 
-        return result;
+        for(int i = 0 ; i < cardIndexes().size()-1; i++){
+            for(int j = i+1; j < cardIndexes().size();j++){
+                SelectedCards.clear();
+                SelectedCards.add(cardIndexes().get(i));
+                SelectedCards.add(cardIndexes().get(j));
+
+                if(isLegal(SelectedCards))
+                    return true;
+            }
+        }
+            return false;
     }
 
     /**
@@ -100,15 +110,16 @@ public class ElevensBoard extends Board {
      */
     private boolean containsPairSum11(List<Integer> selectedCards) {
         int sum= 0;
-        if(selectedCards.size() == 2){
-            for( int i : selectedCards)
+        if(selectedCards.size() == 2) {
+            for (int i : selectedCards) {
                 sum += this.cardAt(i).getPointValue();
             }
-            if(sum == 11){
-                return true;
-            }
-            return false;
         }
+        if(sum == 11){
+            return true;
+        }
+        return false;
+    }
 
 
     /**
@@ -129,7 +140,7 @@ public class ElevensBoard extends Board {
             for(int i : selectedCards){
                 temp += this.cardAt(i).getRank() + ", ";
             }
-            if(temp.indexOf(jack) >= 0 && temp.indexOf(queen) >= 0 && temp.indexOf(king) >= 0)
+            if(temp.indexOf("jack") >= 0 && temp.indexOf("queen") >= 0 && temp.indexOf("king") >= 0)
                 return true;
         }
         return false;
